@@ -49,7 +49,8 @@ footer a { color: var(--muted); }
 article.post { font-size: 1.05rem; }
 article.post h2 { margin-top: 2rem; border-bottom: 1px solid var(--border); padding-bottom: .35rem; }
 article.post a { color: var(--accent); }
-.meta { color: var(--muted); font-size: .9rem; margin-bottom: 1.5rem; }
+.meta { color: var(--muted); font-size: .9rem; margin-bottom: .5rem; }
+.disclosure { color: var(--muted); font-size: .85rem; margin: 0 0 1.25rem; }
 .tags span { background: #f3f4f6; border-radius: 999px; padding: .15rem .7rem; margin-right: .4rem; font-size: .8rem; color: var(--muted); }
 
 /* policy */
