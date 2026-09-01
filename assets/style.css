@@ -41,6 +41,21 @@ p.lead { color: var(--muted); font-size: 1.1rem; }
 .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); transform: translateY(-2px); }
 .card h3 { margin: 0 0 .4rem; font-size: 1.05rem; }
 .card p { margin: 0; color: var(--muted); font-size: .9rem; }
+.catalog-bar { margin: 1rem 0 .25rem; display: grid; gap: .75rem; }
+.catalog-bar input[type="search"],
+.catalog-bar select {
+  font: inherit; color: var(--fg); background: var(--bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: .45rem .7rem;
+}
+.catalog-bar input[type="search"] { max-width: 22rem; }
+.catalog-chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+.chip {
+  font: inherit; font-size: .85rem; cursor: pointer;
+  border: 1px solid var(--border); background: #f3f4f6; color: var(--fg);
+  border-radius: 999px; padding: .2rem .75rem;
+}
+.chip.is-on { background: var(--fg); color: #fff; border-color: var(--fg); }
+.catalog-count { margin: 0; color: var(--muted); font-size: .85rem; }
 footer.site { border-top: 1px solid var(--border); padding: 1.25rem 0; margin-top: 3rem; }
 footer .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; color: var(--muted); font-size: .85rem; }
 footer a { color: var(--muted); }
