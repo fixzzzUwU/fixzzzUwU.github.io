@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>毎日の選び方ガイド — 家計・インテリア・ガーデニング・フィットネス</title>
+  <meta name="description" content="家計・インテリア・ガーデニング・フィットネスの実用ガイド。Amazon.co.jpのアソシエイトリンク付き。" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://fixzzzuwu.github.io/ja/" />
+  <link rel="alternate" hreflang="en" href="https://fixzzzuwu.github.io/" />
+  <link rel="alternate" hreflang="ja" href="https://fixzzzuwu.github.io/ja/" />
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+  <header class="site">
+    <nav class="wrap">
+      <a class="brand" href="/ja/">毎日の選び方ガイド<span>.</span></a>
+      <div>
+        <a href="/ja/#articles">記事</a>
+        <a href="/ja/privacy-policy.html">プライバシー</a>
+        <a href="/ja/terms.html">利用規約</a>
+        <a href="/">English</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <h1>毎日の買い物を、少し楽にする。</h1>
+      <p class="lead">家計・インテリア・ガーデニング・フィットネスの実用ガイド。</p>
+      <p class="disclosure">Amazonのアソシエイトとして、適格販売により収入を得ています。</p>
+    </section>
+    <section id="articles">
+      <h2>最新記事</h2>
+      <div class="catalog-bar" id="catalog-bar">
+        <input type="search" id="catalog-q" placeholder="記事を検索…" autocomplete="off" />
+        <select id="catalog-sort" aria-label="並び替え">
+          <option value="newest">新しい順</option>
+          <option value="az">あいうえお順</option>
+        </select>
+        <p class="catalog-count" id="catalog-count"></p>
+        <div class="catalog-chips" id="catalog-chips"></div>
+      </div>
+      <div class="grid">
+        <!-- ARTICLE_CARDS_GO_HERE -->
+      <a class="card" href="/ja/articles/ja-c621f10e2ed8.html" data-niche="家計・貯金" data-title="貯金が続く家計簿のおすすめ15選！手書きでしっかり家計管理できる人気アイテムを徹底比較" data-date="2026-09-02"><h3>貯金が続く家計簿のおすすめ15選！手書きでしっかり家計管理できる人気アイテムを徹底比較</h3><p>家計・貯金</p></a>
+      </div>
+    </section>
+  </main>
+  <footer class="site">
+    <div class="wrap">
+      © <span id="year"></span> 毎日の選び方ガイド. Amazonのアソシエイトとして、適格販売により収入を得ています。 ·
+      <a href="/ja/privacy-policy.html">プライバシー</a> · <a href="/ja/terms.html">利用規約</a>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+  (function () {
+    var grid = document.querySelector('#articles .grid');
+    if (!grid) return;
+    var cards = [].slice.call(grid.querySelectorAll('a.card'));
+    var qEl = document.getElementById('catalog-q');
+    var sortEl = document.getElementById('catalog-sort');
+    var countEl = document.getElementById('catalog-count');
+    var chipsEl = document.getElementById('catalog-chips');
+    var niche = 'all';
+    var counts = {};
+    cards.forEach(function (c) {
+      var k = c.getAttribute('data-niche') || 'other';
+      counts[k] = (counts[k] || 0) + 1;
+    });
+    var keys = Object.keys(counts).sort();
+    function chip(label, key, n) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chip' + (key === 'all' ? ' is-on' : '');
+      b.setAttribute('data-niche', key);
+      b.textContent = label + ' (' + n + ')';
+      chipsEl.appendChild(b);
+    }
+    chip('すべて', 'all', cards.length);
+    keys.forEach(function (k) { chip(k, k, counts[k]); });
+    function apply() {
+      var q = (qEl.value || '').trim().toLowerCase();
+      var vis = [];
+      cards.forEach(function (c) {
+        var okN = niche === 'all' || c.getAttribute('data-niche') === niche;
+        var t = (c.getAttribute('data-title') || c.textContent || '').toLowerCase();
+        var okQ = !q || t.indexOf(q) !== -1;
+        var show = okN && okQ;
+        c.style.display = show ? '' : 'none';
+        if (show) vis.push(c);
+      });
+      vis.sort(function (a, b) {
+        if (sortEl.value === 'az') {
+          return (a.getAttribute('data-title') || '').localeCompare(b.getAttribute('data-title') || '', 'ja');
+        }
+        return (b.getAttribute('data-date') || '').localeCompare(a.getAttribute('data-date') || '');
+      });
+      vis.forEach(function (c) { grid.appendChild(c); });
+      countEl.textContent = vis.length + ' 件';
+    }
+    chipsEl.addEventListener('click', function (e) {
+      var b = e.target.closest('button.chip');
+      if (!b) return;
+      niche = b.getAttribute('data-niche') || 'all';
+      [].forEach.call(chipsEl.querySelectorAll('.chip'), function (x) {
+        x.classList.toggle('is-on', x === b);
+      });
+      apply();
+    });
+    qEl.addEventListener('input', apply);
+    sortEl.addEventListener('change', apply);
+    apply();
+  })();
+  </script>
+</body>
+</html>
